@@ -1,4 +1,6 @@
 # docker-dropbear-rfwd
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/rokiden/dropbear-rfwd)
+
 Small container with minimal dropbear-ssh-server for remote tcp forwarding. Designed for accessing services behind NAT with attention to security of jump server.
 Dropbear building from sources with minimal configuartion supports only remote tcp forwarding and auth by pubkey.
 
@@ -6,7 +8,7 @@ Dropbear building from sources with minimal configuartion supports only remote t
 ```
 git clone https://github.com/rokiden/docker-dropbear-rfwd.git
 cd docker-dropbear-rfwd
-docker build . -t dropbear-rfwd
+docker build . -t rokiden/dropbear-rfwd
 ```
 ## Usage
 ### On jump server:
@@ -16,7 +18,7 @@ docker build . -t dropbear-rfwd
  * (option) set UUID env used for authorized_keys permissions fix (default 1000)
  * (option) pass dropbear args (-K 10)
 ```
-docker run -d --name dropbear-rfwd -p4444:22 -p4422:2000 -v /opt/dropbear-rfwd/keys:/keys -e UUID=1111 dropbear-rfwd -K 10
+docker run -d --name dropbear-rfwd -p4444:22 -p4422:2000 -v /opt/dropbear-rfwd/keys:/keys -e UUID=1111 rokiden/dropbear-rfwd -K 10
 ```
 
 ### On remote server (behind NAT):
