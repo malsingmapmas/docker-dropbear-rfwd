@@ -11,7 +11,7 @@ KEYS="/home/user/.ssh/authorized_keys"
 if [ -f $KEYS ]; then
 	chown user $KEYS
 	chmod 600 $KEYS
-	exec /bin/dropbear -RFEa $1
+	exec /bin/dropbear -RFEa "$@"
 else
 	echo "authorized_keys not found"
 	exit 1
